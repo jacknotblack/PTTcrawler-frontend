@@ -45,7 +45,11 @@ class App extends Component {
   installPrompt = null;
 
   installApp = async () => {
+    this.setState({
+      installButton: false
+    });
     console.log(this.installPrompt);
+    if (this.installPrompt === null) alert(1);
     if (!this.installPrompt) return false;
     this.installPrompt.prompt();
     let outcome = await this.installPrompt.userChoice;
