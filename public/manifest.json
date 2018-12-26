@@ -3,12 +3,12 @@
   "name": "Used NS Games Info from PTT",
   "icons": [
     {
-      "src": "favicon512.ico",
+      "src": "favicon512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "favicon192.ico",
+      "src": "favicon192.png",
       "sizes": "192x192 64x64 32x32 24x24 16x16",
       "type": "image/png"
     }
