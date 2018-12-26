@@ -12,13 +12,11 @@ class GameDetail extends PureComponent {
   }
   /* eslint-disable */
   componentDidMount() {
-    console.log(this.props);
     Axios.get(
       `https://hidden-lowlands-59931.herokuapp.com/game/${this.props.id}`
       // `https://hidden-lowlands-59931.herokuapp.com/game/11`
     ).then(res => {
       // Axios.get("localhost:3001/games").then(res => {
-      console.log(res.data);
       this.setState({
         posts: res.data
       });
@@ -26,9 +24,6 @@ class GameDetail extends PureComponent {
   }
 
   render() {
-    console.log(this);
-    console.log(this.context);
-    console.log(this.props);
     const { posts } = this.state;
     return (
       <div className="game-detail">
