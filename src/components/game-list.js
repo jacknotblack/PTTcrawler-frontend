@@ -1,41 +1,33 @@
 import React, { PureComponent } from "react";
-import Axios from "axios";
+// import Axios from "axios";
+import { Link } from "@reach/router";
+import GameContext from "../context/games";
 
 import "./game-list.scss";
 
-class GameList extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      games: []
-    };
-  }
-  componentDidMount() {
-    Axios.get("https://hidden-lowlands-59931.herokuapp.com/games").then(res => {
-      console.log(res.data);
-      this.setState({
-        games: res.data
-      });
-    });
-  }
+// export const GameContext = React.createContext();
 
+class GameList extends PureComponent {
   render() {
-    const { games } = this.state;
+    const games = this.context;
+
     return (
       <div className="game-list">
         {games.map(game => (
-          <div className="game-container" key={game.id}>
-            <img src={game.img} alt="" />
-            <div className="info">
-              <div>{game.name}</div>
-              <div>最低價：${game.lowest_price}</div>
-              <a href={game.lp_link}>link</a>
+          <Link key={game.id} to={`game/${game.id}`}>
+            <div className="game-container">
+              <img src={game.img} alt="" />
+              <div className="info">
+                <div className="name">{game.name}</div>
+                <div className="price">最低價：${game.lowest_price}</div>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     );
   }
 }
+GameList.contextType = GameContext;
 
 export default GameList;
