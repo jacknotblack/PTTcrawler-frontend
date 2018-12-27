@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Router } from "@reach/router";
 import Axios from "axios";
 
 import GameList from "./components/game-list";
-import GameDetail from "./components/game-detail";
 import "./App.scss";
 
 import GameContext from "./context/games";
@@ -70,11 +68,8 @@ class App extends Component {
     const { games, installButton } = this.state;
     return (
       <div className="App">
-        <GameContext.Provider value={this.state.games}>
-          <Router>
-            <GameList path="/" games={games} />
-            <GameDetail path="/game/:id" games={games} />
-          </Router>
+        <GameContext.Provider value={games}>
+            <GameList />
         </GameContext.Provider>
         {installButton && (
           <div className="install-btn" onClick={this.installApp}>
