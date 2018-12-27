@@ -1,0 +1,57 @@
+.game-list {
+  transition: all 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+  .game-detail {
+    z-index: 100;
+    position: relative;
+    display: flex;
+    background: black;
+    color: white;
+    height: 150px;
+    padding: 5px 10px;
+    border-bottom: 1px solid gray;
+    &:nth-child(even) {
+      background: #091631;
+    }
+    img {
+      align-self: center;
+      width: 93px;
+      object-fit: contain;
+    }
+    .info {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 10px 10px 20px;
+    }
+    .name {
+      display: flex;
+      font-size: 18px;
+      border-left: 6px gray solid;
+      padding-left: 10px;
+    }
+    .price {
+      display: flex;
+      align-self: flex-end;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 2px 4px;
+    }
+   
+  } 
+  .game-detail~div{
+      position: relative !important;
+      top: 0px !important;
+      // z-index: -1
+    }
+}
+
+.posts {
+  max-height: calc(100vh - 161px);
+  overflow-y: scroll;
+  .post-container {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+}
