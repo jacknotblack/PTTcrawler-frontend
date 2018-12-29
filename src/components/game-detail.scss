@@ -1,21 +1,45 @@
 .game-list {
   transition: all 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+  .game {
+    position: relative;
+    .game-detail {
+      background: #0d151f;
+    }
+    &:nth-child(even) {
+      .game-detail {
+        background: #17212d;
+      }
+    }
+
+    .triangle {
+      position: absolute;
+      z-index: 150;
+      width: 0px;
+      height: 0px;
+      border-width: 30px;
+      border-style: solid;
+      border-color: transparent transparent transparent gray;
+      transform: rotateZ(-45deg);
+      top: -30px;
+      right: -30px;
+    }
+  }
   .game-detail {
     z-index: 100;
     position: relative;
     display: flex;
-    background: black;
+
     color: white;
-    height: 150px;
+    box-sizing: border-box;
+    height: calc(20vh - 1px);
     padding: 5px 10px;
     border-bottom: 1px solid gray;
-    &:nth-child(even) {
-      background: #091631;
-    }
+
     img {
       align-self: center;
-      width: 93px;
+      // width: 93px;
       object-fit: contain;
+      max-height: 100%;
     }
     .info {
       display: flex;
@@ -33,21 +57,37 @@
     .price {
       display: flex;
       align-self: flex-end;
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 2px 4px;
+      span{
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 2px 4px;
+        margin-right: 10px;
+      }
+      .arrow{
+        width:9px;
+        height:9px;
+        border-width: 2px;
+        border-color: transparent white white transparent;
+        border-style: solid;
+        transform-origin: 6.5px 6.5px;
+        transform: rotateZ(-45deg);
+        margin-top: 6px;
+        transition: transform 200ms linear;
+        &.down{
+          transform: rotateZ(45deg);
+        }
+      }
     }
-   
-  } 
-  .game-detail~div{
-      position: relative !important;
-      top: 0px !important;
-      // z-index: -1
-    }
+  }
+  .game-detail ~ div {
+    position: relative !important;
+    top: 0px !important;
+  }
 }
 
 .posts {
   max-height: calc(100vh - 161px);
   overflow-y: scroll;
+  // color: white;
   .post-container {
     padding: 5px 10px;
     display: flex;

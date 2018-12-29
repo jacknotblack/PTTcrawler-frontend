@@ -8,16 +8,16 @@ import "./game-detail.scss";
 
 const PostList = posed.div({
   enter: {
-    maxHeight: 'calc(100vh - 161px)',
-    height: 'auto',
+    maxHeight: "calc(100vh - 161px)",
+    height: "auto",
     transition: {
       duration: 500
     }
   },
   exit: {
-    height: '0px',
+    height: "0px",
     transition: {
-        duration: 500
+      duration: 500
     }
   }
 });
@@ -52,11 +52,15 @@ class GameDetail extends PureComponent {
     const { game, expanded } = this.props;
     return (
       <div className="game">
+        <div className="triangle" />
         <div className="game-detail" onClick={this.clickHandler}>
           <img src={game.img} alt="" />
           <div className="info">
             <div className="name">{game.name}</div>
-            <div className="price">最低價：${game.lowest_price}</div>
+            <div className="price">
+              <span>最低價：${game.lowest_price}</span>
+              <div className={`arrow ${expanded? 'down': ''}`} />
+            </div>
           </div>
         </div>
         <PoseGroup>
